@@ -1,0 +1,10 @@
+name: Infra AKS CI/CD pipeline
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+        steps:
