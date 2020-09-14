@@ -1,1 +1,2 @@
 terraform-aks-k8s/.terraform
+terraform-aks-k8s/out.plan

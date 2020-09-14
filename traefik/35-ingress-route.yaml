@@ -1,0 +1,36 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: simpleingressroute
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+    - web
+  routes:
+    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/api`)
+      kind: Rule
+      services:
+        - name: ct-server-service
+          port: 4000
+  tls:
+    certResolver: default
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingressroutetls
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+    - web
+  routes:
+    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/`)
+      kind: Rule
+      services:
+        - name: ct-web-service
+          port: 80
+  tls:
+    certResolver: default
