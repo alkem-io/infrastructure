@@ -10,7 +10,7 @@ you have only 5 requests per hour before you will be banned and it is not recomm
 - Run the following command and create all the resource objects except ingress-route
 
 ```bash
-$ kubectl apply -f 00-resource-crd-definition.yml,05-traefik-rbac.yml,10-service-account.yaml,15-traefik-deployment.yaml,20-traefik-service.yaml
+$ kubectl apply -f 00-resource-crd-definition.yml,05-traefik-rbac.yml,10-service-account.yaml,15-traefik-deployment.yaml,20-traefik-service.yaml,34-middelware.yaml
 ```
 
 - Get the IP of the Traefik Service exposed as Load Balancer
