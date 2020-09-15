@@ -10,6 +10,10 @@ spec:
   routes:
     - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/api`)
       kind: Rule
+      priority: 20
+      middlewares:
+      - name: graphql-rewrite
+        namespace: default
       services:
         - name: ct-server-service
           port: 4000
@@ -29,6 +33,7 @@ spec:
   routes:
     - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/`)
       kind: Rule
+      priority: 10
       services:
         - name: ct-web-service
           port: 80

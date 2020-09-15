@@ -1,0 +1,8 @@
+# Replace the path by /foo
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: graphql-rewrite
+spec:
+  replacePath:
+    path: /graphql
