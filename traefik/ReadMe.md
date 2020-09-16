@@ -39,11 +39,6 @@ ingressroute.traefik.containo.us/simpleingressroute created
 ingressroute.traefik.containo.us/ingressroutetls created
 ```
 
-- Create the secret for the deployment of the server.
-```
-kubectl create secret generic server-secret --from-literal=DATABASE_HOST='db' --from-literal=MYSQL_DATABASE='cherrytwist' --from-literal=MYSQL_ROOT_PASSWORD='toor' --from-literal=GRAPHQL_ENDPOINT_PORT='4000' --from-literal=GRAPHQL_SERVER_ENDPOINT_URL='ct-server-deployment.default'
-```
-
 ##  Next Steps 
 - Delete the traefik deployment
 ```bash
