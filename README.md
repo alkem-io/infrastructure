@@ -17,7 +17,7 @@ Creates deployments, managing infrastructure scripts, devops, monitoring, ...
 - Read the ReadMe.md that is located in that directory.
 - Create the secret for mySQL and GraphQL sensitive information (sample with default values).
 ```
-kubectl create secret generic server-secret --from-literal=DATABASE_HOST='db' --from-literal=MYSQL_DATABASE='cherrytwist' --from-literal=MYSQL_ROOT_PASSWORD='toor' --from-literal=GRAPHQL_ENDPOINT_PORT='4000' --from-literal=GRAPHQL_SERVER_ENDPOINT_URL='ct-server-deployment.default'
+kubectl create secret generic server-secret --from-literal=DATABASE_HOST='db' --from-literal=MYSQL_DATABASE='cherrytwist' --from-literal=MYSQL_ROOT_PASSWORD='toor' --from-literal=GRAPHQL_ENDPOINT_PORT='4000' --from-literal=GRAPHQL_SERVER_ENDPOINT_URL='ct-server-service.default'
 ```
 - Create the secret for WAIT_HOSTS values (sample with default values).
 ```
