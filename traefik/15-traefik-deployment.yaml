@@ -19,13 +19,16 @@ spec:
       serviceAccountName: traefik-ingress-controller
       containers:
         - name: traefik
-          image: traefik:v2.1
+          image: traefik:v2.2
           args:
             - --api
             - --log.level=DEBUG
             - --api.insecure
             - --accesslog
             - --entrypoints.web.address=:80
+            - --entrypoints.web.http.redirections.entryPoint.to=websecure
+            - --entrypoints.web.http.redirections.entryPoint.scheme=https
+            - --entrypoints.web.http.redirections.entrypoint.permanent=true
             - --entrypoints.websecure.address=:443
             - --providers.kubernetescrd
             - --certificatesresolvers.default.acme.tlschallenge
@@ -33,7 +36,7 @@ spec:
             - --certificatesresolvers.default.acme.storage=acme.json
             # Please note that this is the staging Let's Encrypt server.
             # Once you get things working, you should remove that whole line altogether.
-            - --certificatesresolvers.default.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
+            #- --certificatesresolvers.default.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
           ports:
             - name: web
               containerPort: 80
