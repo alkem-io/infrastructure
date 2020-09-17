@@ -23,3 +23,10 @@ kubectl create secret generic server-secret --from-literal=DATABASE_HOST='db' --
 ```
 kubectl create secret generic wait-hosts --from-literal=WAIT_HOSTS='db.default:3306' --from-literal=WAIT_HOSTS_TIMEOUT='300' --from-literal=WAIT_SLEEP_INTERVAL='30' --from-literal=WAIT_HOSTS_CONNECT_TIMEOUT='30' 
 ```
+
+# To Update Github Actions:
+- Create an Azure role assignment for the scope of your Azure subscription and resource group.
+```
+az ad sp create-for-rbac --sdk-auth --role contributor --scopes /subscriptions/{subscription id}/resourceGroups/azure-k8s-dev
+```
+- Go to the organizational secrets and update the secret `AZURE_CRED_K8S` with the output of the previous command
