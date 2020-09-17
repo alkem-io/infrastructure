@@ -1,19 +1,14 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: simpleingressroute
+  name: serveringresstls
   namespace: default
 spec:
   entryPoints:
     - websecure
-    - web
   routes:
     - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/graphql`)
       kind: Rule
-      priority: 20
-      middlewares:
-      - name: graphql-rewrite
-        namespace: default
       services:
         - name: ct-server-service
           port: 4000
@@ -24,16 +19,54 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: ingressroutetls
+  name: serveringress
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/graphql`)
+      kind: Rule
+      middlewares:
+        - name: http-redirectscheme
+      services:
+        - name: ct-server-service
+          port: 4000
+  tls:
+    certResolver: default
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: webingresstls
   namespace: default
 spec:
   entryPoints:
     - websecure
+  routes:
+    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/`)
+      kind: Rule
+      services:
+        - name: ct-web-service
+          port: 80
+  tls:
+    certResolver: default
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: webingress
+  namespace: default
+spec:
+  entryPoints:
     - web
   routes:
     - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/`)
       kind: Rule
-      priority: 10
+      middlewares:
+        - name: http-redirectscheme
       services:
         - name: ct-web-service
           port: 80
