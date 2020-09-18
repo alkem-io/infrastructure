@@ -1,6 +1,11 @@
 # Infrastructure
 Creates deployments, managing infrastructure scripts, devops, monitoring, ...
 
+# To Connect to K8s
+- A recommendation is the use the `lens` Kube IDE for connection: `https://github.com/lensapp/lens`
+- Download and log into azure cli `az --login`
+- Next run `az aks get-credentials --resource-group azure-k8s-dev --name k8s-dev` to get your kube creds
+
 # To Deploy:
 
 - Download and log into azure cli `az --login`
