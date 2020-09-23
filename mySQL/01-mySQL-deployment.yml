@@ -29,10 +29,22 @@ spec:
             - secretRef:
                 name: server-secret
           volumeMounts:
-          - name: mysql-config-volume 
-            mountPath: /etc/mysql/conf.d/default_auth.cnf 
-            subPath: default_auth 
+          - name: mysql-persistent-storage
+            mountPath: /var/lib/mysql
+            subPath: mysql
+          - name: mysql-config-volume
+            mountPath: /etc/mysql/conf.d/default_auth.cnf
+            subPath: default_auth
       volumes:
-          - name: mysql-config-volume 
+          - name: mysql-persistent-storage
+            persistentVolumeClaim:
+              claimName: mysql-pv-claim
+          - name: mysql-config-volume
             configMap:
               name: mysql-config
+
+
+
+
+              #        volumes:
+              #
