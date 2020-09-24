@@ -22,7 +22,7 @@ Creates deployments, managing infrastructure scripts, devops, monitoring, ...
 - Read the ReadMe.md that is located in that directory.
 - Create the secret for mySQL and GraphQL sensitive information (sample with default values).
 ```
-kubectl create secret generic server-secret --from-literal=DATABASE_HOST='db' --from-literal=MYSQL_DATABASE='cherrytwist' --from-literal=MYSQL_ROOT_PASSWORD='toor' --from-literal=GRAPHQL_ENDPOINT_PORT='4000' --from-literal=GRAPHQL_SERVER_ENDPOINT_URL='ct-server-service.default'
+kubectl create secret generic server-secret --from-literal=DATABASE_HOST='db' --from-literal=MYSQL_DATABASE='cherrytwist' --from-literal=MYSQL_ROOT_PASSWORD='toor' --from-literal=GRAPHQL_ENDPOINT_PORT='4000' --from-literal=GRAPHQL_SERVER_ENDPOINT_URL='ct-server-service.default' --from-literal=REACT_APP_AUTH_CLIENT_ID='<CLIENT_ID_FROM_AZ>' --from-literal=REACT_APP_AUTH_TENANT_ID='<TENANT_ID_FROM_AZ>' --from-literal=REACT_APP_AUTH_API_SCOPE='<api://[cherrytwist-api-client-id]/.default>' --from-literal=AAD_TENANT='<SAME_AS_REACT_APP_AUTH_TENANT_ID>' --from-literal=AAD_CLIENT='<cherrytwist-api app registration client id>'
 ```
 - Create the secret for WAIT_HOSTS values (sample with default values).
 ```
