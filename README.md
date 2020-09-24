@@ -3,6 +3,7 @@ Creates deployments, managing infrastructure scripts, devops, monitoring, ...
 
 # Diagram of K8s deployment
 
+![Work Flow](diagrams/WorkFlow.png)
 ![K8s deployment](diagrams/kubesDiagram.png)
 
 # Url mappings
