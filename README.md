@@ -2,8 +2,10 @@
 Creates deployments, managing infrastructure scripts, devops, monitoring, ...
 
 # Diagram of K8s deployment
-
+##### Current overview of workflow between github, ACR, and AKS.
 ![Work Flow](diagrams/WorkFlow.png)
+
+##### Current overview of the services that are running on AKS.
 ![K8s deployment](diagrams/kubesDiagram.png)
 
 # Url mappings
