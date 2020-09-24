@@ -22,11 +22,15 @@ Creates deployments, managing infrastructure scripts, devops, monitoring, ...
 - Read the ReadMe.md that is located in that directory.
 - Create the secret for mySQL and GraphQL sensitive information (sample with default values).
 ```
-kubectl create secret generic server-secret --from-literal=DATABASE_HOST='db' --from-literal=MYSQL_DATABASE='cherrytwist' --from-literal=MYSQL_ROOT_PASSWORD='toor' --from-literal=GRAPHQL_ENDPOINT_PORT='4000' --from-literal=GRAPHQL_SERVER_ENDPOINT_URL='ct-server-service.default' --from-literal=REACT_APP_AUTH_CLIENT_ID='<CLIENT_ID_FROM_AZ>' --from-literal=REACT_APP_AUTH_TENANT_ID='<TENANT_ID_FROM_AZ>' --from-literal=REACT_APP_AUTH_API_SCOPE='<api://[cherrytwist-api-client-id]/.default>' --from-literal=AAD_TENANT='<SAME_AS_REACT_APP_AUTH_TENANT_ID>' --from-literal=AAD_CLIENT='<cherrytwist-api app registration client id>'
+kubectl create secret generic server-secret --from-literal=DATABASE_HOST='db' --from-literal=MYSQL_DATABASE='cherrytwist' --from-literal=MYSQL_ROOT_PASSWORD='toor' --from-literal=GRAPHQL_ENDPOINT_PORT='4000' --from-literal=GRAPHQL_SERVER_ENDPOINT_URL='ct-server-service.default' 
 ```
 - Create the secret for WAIT_HOSTS values (sample with default values).
 ```
 kubectl create secret generic wait-hosts --from-literal=WAIT_HOSTS='db.default:3306' --from-literal=WAIT_HOSTS_TIMEOUT='300' --from-literal=WAIT_SLEEP_INTERVAL='30' --from-literal=WAIT_HOSTS_CONNECT_TIMEOUT='30' 
+```
+- Create a secret for AAD values (Sample with items between <> needing to be replaces). In this example we have two AAD called cherrytwist-web and one called cherrytwist-api. 
+```
+kubectl create secret generic server-secret --from-literal=REACT_APP_AUTH_CLIENT_ID='<CLIENT_ID from cherrytwist-web >' --from-literal=REACT_APP_AUTH_TENANT_ID='<TENANT_ID from cherrytwist-web>' --from-literal=REACT_APP_AUTH_API_SCOPE='<api://[cherrytwist-api-client-id]/.default>' --from-literal=AAD_TENANT='<SAME_AS_REACT_APP_AUTH_TENANT_ID>' --from-literal=AAD_CLIENT='<client id from cherrytwist-api>'
 ```
 
 # To Update Github Actions:
