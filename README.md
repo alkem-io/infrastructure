@@ -30,7 +30,7 @@ kubectl create secret generic wait-hosts --from-literal=WAIT_HOSTS='db.default:3
 ```
 - Create a secret for AAD values (Sample with items between <> needing to be replaces). In this example we have two AAD called cherrytwist-web and one called cherrytwist-api. 
 ```
-kubectl create secret generic server-secret --from-literal=REACT_APP_AUTH_CLIENT_ID='<CLIENT_ID from cherrytwist-web >' --from-literal=REACT_APP_AUTH_TENANT_ID='<TENANT_ID from cherrytwist-web>' --from-literal=REACT_APP_AUTH_API_SCOPE='<api://[cherrytwist-api-client-id]/.default>' --from-literal=AAD_TENANT='<SAME_AS_REACT_APP_AUTH_TENANT_ID>' --from-literal=AAD_CLIENT='<client id from cherrytwist-api>'
+kubectl create secret generic aad-secret --from-literal=REACT_APP_AUTH_CLIENT_ID='<CLIENT_ID from cherrytwist-web >' --from-literal=REACT_APP_AUTH_TENANT_ID='<TENANT_ID from cherrytwist-web>' --from-literal=REACT_APP_AUTH_API_SCOPE='<api://[cherrytwist-api-client-id]/.default>' --from-literal=AAD_TENANT='<SAME_AS_REACT_APP_AUTH_TENANT_ID>' --from-literal=AAD_CLIENT='<client id from cherrytwist-api>'
 ```
 
 # To Update Github Actions:
