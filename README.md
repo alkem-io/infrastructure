@@ -55,28 +55,28 @@ There are two main types of secretes in this project concurring infrastructure. 
 
 For connecting github acctions to the acr a brief set of steps are proved. For more details please see the [ms docs](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-github-action):
 - Create service principal for Azure authentication
- - `groupId=$(az group show \
-    --name <resource-group-name> \
-    --query id --output tsv)`
- - `az ad sp create-for-rbac \
-    --scope $groupId \
-    --role Contributor \
-    --sdk-auth`
- - Save the output for later
+  - `groupId=$(az group show \
+     --name <resource-group-name> \
+     --query id --output tsv)`
+  - `az ad sp create-for-rbac \
+     --scope $groupId \
+     --role Contributor \
+     --sdk-auth`
+  - Save the output for later
 - Update service principal for registry authentication
- - `registryId=$(az acr show \
-    --name <registry-name> \
-    --query id --output tsv)`
- - `az role assignment create \
-    --assignee <ClientId> \
-    --scope $registryId \
-    --role AcrPush`
+  - `registryId=$(az acr show \
+     --name <registry-name> \
+     --query id --output tsv)`
+  - `az role assignment create \
+     --assignee <ClientId> \
+     --scope $registryId \
+     --role AcrPush`
 - Save credentials to GitHub repo
- - AZURE_CREDENTIALS: The entire JSON output from the service principal creation step
- - REGISTRY_LOGIN_SERVER: The login server name of your registry (all lowercase). Example: myregistry.azurecr.io
- - REGISTRY_USERNAME: The clientId from the JSON output from the service principal creation
- - REGISTRY_PASSWORD: The clientSecret from the JSON output from the service principal creation
- - RESOURCE_GROUP: The name of the resource group you used to scope the service principal
+  - AZURE_CREDENTIALS: The entire JSON output from the service principal creation step
+  - REGISTRY_LOGIN_SERVER: The login server name of your registry (all lowercase). Example: myregistry.azurecr.io
+  - REGISTRY_USERNAME: The clientId from the JSON output from the service principal creation
+  - REGISTRY_PASSWORD: The clientSecret from the JSON output from the service principal creation
+  - RESOURCE_GROUP: The name of the resource group you used to scope the service principal
 
 A brief overview to add rbac from acr to aks, see [ms docs here](https://docs.microsoft.com/en-us/azure/aks/cluster-container-registry-integration) for more info:
 - `az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-name>`
