@@ -40,7 +40,7 @@ To start using CherryTwist one needs to spin up a kubernetes cluster. Please loo
 1. From the app's Overview page, select the **Authentication** section.
    - Click **Add a platform** button.
    - Select **Single-page Applications** on the right blade.
-   - Add a **Redirect URIs**, for instance `http://localhost:3000`.
+   - Add a **Redirect URIs**, for example for local usage `http://localhost:3000` or for production deployment `https://dev.cherrytwist.org`. You can use multiple redirect uris for your configuration.
    - Click **Configure**.
       ![App Overview](diagrams/authentication/Client-Authentication.png)
    - Record the **Redirect URI**. It will be used as the **REACT_APP_AUTH_REDIRECT_URI** environment variable value in the Cherrytwist Client App.
