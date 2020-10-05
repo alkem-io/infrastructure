@@ -137,6 +137,10 @@ kubectl create secret generic wait-hosts --from-literal=WAIT_HOSTS='db.default:3
 ```
 kubectl create secret generic aad-secret --from-literal=REACT_APP_AUTH_CLIENT_ID='<CLIENT_ID from cherrytwist-web >' --from-literal=REACT_APP_AUTH_TENANT_ID='<TENANT_ID from cherrytwist-web>' --from-literal=REACT_APP_AUTH_API_SCOPE='<api://[cherrytwist-api-client-id]/.default>' --from-literal=AAD_TENANT='<tenant id from cherrytwist-api>' --from-literal=AAD_CLIENT='<client id from cherrytwist-api>'
 ```
+- Create a secret for the server authentication flag that will turn AAD auth on or off.
+```
+kubectl create secret generic authentication --from-literal=AUTHENTICATION_ENABLED='true'
+```
 
 # To Update Github Actions
 - Create an Azure role assignment for the scope of your Azure subscription and resource group.
