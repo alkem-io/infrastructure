@@ -31,6 +31,7 @@ Non-authoritative answer:
 Name:   k8straefiktlstest.gotdns.ch
 Address: 35.238.72.172
 ```
+- Edit the `35-ingress-route.yaml` to suit the ends of the environment and paths that need to be defined. 
 
 - Create the resource ingress-route
 ```bash
