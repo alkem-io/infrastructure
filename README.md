@@ -151,7 +151,7 @@ kubectl create secret generic wait-hosts --from-literal=WAIT_HOSTS='db.default:3
 ```
 - Create a secret for the server authentication flag that will turn AAD auth on or off.
 ```
-kubectl create secret generic authentication --from-literal=AUTHENTICATION_ENABLED='true'
+kubectl create secret generic authentication --from-literal=AUTH_ENABLED='true'
 ```
 
 # To Update Github Actions
