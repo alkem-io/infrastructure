@@ -149,13 +149,13 @@ kubectl create secret generic server-secret --from-literal=DATABASE_HOST='db' --
 ```
 kubectl create secret generic wait-hosts --from-literal=WAIT_HOSTS='db.default:3306' --from-literal=WAIT_HOSTS_TIMEOUT='300' --from-literal=WAIT_SLEEP_INTERVAL='30' --from-literal=WAIT_HOSTS_CONNECT_TIMEOUT='30' 
 ```
-- Create a secret for AAD values (Sample with items between <> needing to be replaces). In this example we have two AAD called cherrytwist-web and one called cherrytwist-api. 
+- Create a secret for the server authentication flag that will turn AAD auth on or off and provide AAD authentication environment variables.
 ```
-kubectl create secret generic aad-secret --from-literal=REACT_APP_AUTH_CLIENT_ID='<CLIENT_ID from cherrytwist-web >' --from-literal=REACT_APP_AUTH_TENANT_ID='<TENANT_ID from cherrytwist-web>' --from-literal=REACT_APP_AUTH_API_SCOPE='<api://[cherrytwist-api-client-id]/.default>' --from-literal=AAD_TENANT='<tenant id from cherrytwist-api>' --from-literal=AAD_CLIENT='<client id from cherrytwist-api>'
-```
-- Create a secret for the server authentication flag that will turn AAD auth on or off.
-```
-kubectl create secret generic authentication --from-literal=AUTHENTICATION_ENABLED='true'
+kubectl create secret generic authentication --from-literal=AUTH_AAD_CLIENT_APP_ID=[Cherrytwist Web Client App Client Id] --from-literal=AUTH_AAD_CHERRYTWIST_API_SCOPE=[Cherrytwist Api API Scope] \
+--from-literal=AUTH_AAD_CLIENT_LOGIN_REDIRECT_URI=[Cherrytwist Web Client Login Redirect URI] --from-literal=AUTH_AAD_TENANT=[tenant id for the AAD] \
+--from-literal=AUTH_AAD_CHERRYTWIST_API_APP_ID=[Cherrytwist API App Client Id] --from-literal=AUTH_AAD_LOGGING_PII=false --from-literal=AUTH_AAD_LOGGING_LEVEL=Error \
+--from-literal=AUTH_AAD_MSGRAPH_API_SECRET=[Cherrytwist API Secret]  --from-literal=AUTH_AAD_MSGRAPH_API_SCOPE='Directory.AccessAsUser.All Directory.ReadWrite.All User.ReadWrite.All' \
+--from-literal=AUTH_AAD_UPN_DOMAIN=[UPN Trusted Domain] --from-literal=AUTH_ENABLED=true
 ```
 
 # To Update Github Actions
