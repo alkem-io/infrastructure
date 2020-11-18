@@ -127,6 +127,23 @@ For creating a production version of Cherrytwist the recommendation is to use a 
    - Click Endpoints
 ![Endpoints](diagrams/authentication/OAuth-OIDC-Endpoints.png)
 
+
+# To Configure CDN 
+The current CDN endpoint is pointing to `https://dev-cherrytwist.azureedge.net` with the custom domain at `cdn.dev.cherrytwist.org`. 
+
+## Setting up CDN
+- Create a CDN endpoint on Azure portal. 
+![CDN](diagrams/cnd/Create-CDN.png)
+- Click on " + Endpoint"
+![Endpoint](diagrams/cnd/Add-Endpoint.png)
+- Fill in the information
+![Endpoint](diagrams/cnd/Add-Enpoint-screen.png)
+- Click "Custom domain".
+![Endpoint](diagrams/cnd/Add-Custom-Domain.png)
+- Add a "Custom hostname" to the application. 
+![Endpoint](diagrams/cnd/Add-custom-Domain-screen.png)
+
+
 # To Deploy
 
 - Download and log into azure cli `az --login`
