@@ -141,7 +141,9 @@ The current CDN endpoint is pointing to `https://dev-cherrytwist.azureedge.net` 
 1. If one would like to have to CDN be connected to a custom domin one needs to setup the DNS records and then click "Custom domain". This should be located on the CDN page for the endpoint what was created above.
    ![CustomDomain](diagrams/cnd/Add-Custom-Domain.png)
 1. Add a "Custom hostname" to the application as one setup in the DNS record. Once this last step is complet the application needs to be adjusted to use this endpoint.
-   ![CustomDomain](diagrams/cnd/Add-custom-Domain-screen.png)
+
+
+![CustomDomain](diagrams/cnd/Add-custom-Domain-screen.png)
 
 
 # To Deploy
