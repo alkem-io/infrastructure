@@ -132,16 +132,16 @@ For creating a production version of Cherrytwist the recommendation is to use a 
 The current CDN endpoint is pointing to `https://dev-cherrytwist.azureedge.net` with the custom domain at `cdn.dev.cherrytwist.org`. 
 
 ## Setting up CDN
-- Create a CDN endpoint on Azure portal. 
-![CDN](diagrams/cnd/Create-CDN.png)
-- Click on " + Endpoint"
-![Endpoint](diagrams/cnd/Add-Endpoint.png)
-- Fill in the information
-![Endpoint](diagrams/cnd/Add-Enpoint-screen.png)
-- Click "Custom domain".
-![Endpoint](diagrams/cnd/Add-Custom-Domain.png)
-- Add a "Custom hostname" to the application. 
-![Endpoint](diagrams/cnd/Add-custom-Domain-screen.png)
+1. Create a CDN endpoint on Azure portal. 
+   ![CDN](diagrams/cnd/Create-CDN.png)
+1. Click on " + Endpoint" to create a new endpoint for the CDN. This will be the incoming url taht needs to be added to the application. One must also create a DNS record to point to either this endpoint or to the custom domain added in the later steps.
+   ![Endpoint](diagrams/cnd/Add-Endpoint.png)
+1. Fill in the information with the values for the endpoint that one is trying ot setup. The example bellow should help: 
+   ![Endpoint](diagrams/cnd/Add-Enpoint-screen.png)
+1. If one would like to have to CDN be connected to a custom domin one needs to setup the DNS records and then click "Custom domain". This should be located on the CDN page for the endpoint what was created above.
+   ![CustomDomain](diagrams/cnd/Add-Custom-Domain.png)
+1. Add a "Custom hostname" to the application as one setup in the DNS record.
+   ![CustomDomain](diagrams/cnd/Add-custom-Domain-screen.png)
 
 
 # To Deploy
