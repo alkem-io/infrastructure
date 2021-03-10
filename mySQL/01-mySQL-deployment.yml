@@ -27,7 +27,7 @@ spec:
               name: db
           envFrom:
             - secretRef:
-                name: server-secret
+                name: ct-server-secret
           volumeMounts:
           - name: mysql-persistent-storage
             mountPath: /var/lib/mysql
