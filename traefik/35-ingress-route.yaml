@@ -116,3 +116,42 @@ spec:
           port: 80
   tls:
     certResolver: default
+
+#simple-auth-provider
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: webingresstls-admin
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/auth/login`)
+      kind: Rule
+      services:
+        - name: ct-simple-auth
+          port: 3002
+  tls:
+    certResolver: default
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: webingress-admin
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/auth/login`)
+      kind: Rule
+      middlewares:
+        - name: http-redirectscheme
+      services:
+        - name: ct-simple-auth
+          port: 3002
+  tls:
+    certResolver: default
