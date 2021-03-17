@@ -27,7 +27,9 @@ spec:
               name: db
           envFrom:
             - secretRef:
-                name: ct-server-secret
+                name: ct-secrets
+            - configMapRef:
+                name: ct-config
           volumeMounts:
           - name: mysql-persistent-storage
             mountPath: /var/lib/mysql
