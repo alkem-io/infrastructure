@@ -31,14 +31,25 @@ Currently there are two endpoints exposed:
 - [dev.cherrytwist.org](dev.cherrytwist.org): the web front end to allow browsing of the Cherrytwist instance.
 - [dev.cherrytwist.org/graphql](dev.cherrytwist.org/graphql): the graphql api exposed by the server. It can be both directly accessed and it is used by the client web server to obtain the data presented via the browser application. More can be found on the [Cherrytwist Server](https://github.com/cherrytwist/Server/) repo. 
 
-# K8s Cluster
-For creating a production version of Cherrytwist the recommendation is to use a Kubernetes cluster. Please look into the [terraform-aks-k8s](terraform-aks-k8s) folder for steps on how to terraform a new cluster on azure.
+# Orchestration
+
+For creating a production version of Cherrytwist the recommendation is to use a Kubernetes cluster. Currently there are two deployments supported:
+
+## K8s AKS (Azure Kubernetes Service) Cluster
+ Please look into the [terraform-aks-k8s](terraform-aks-k8s) folder for steps on how to terraform a new cluster on Azure.
+
+
+## K8s AWS EKS (Elastic Kubernetes Service) Cluster
+Please look into the [terraform-eks-k8s](terraform-eks-k8s) folder for steps on how to terraform a new cluster on AWS.
 
 # To Connect to K8s
+## Azure
 - A recommendation is the use the `lens` Kube IDE for connection: `https://github.com/lensapp/lens`
 - Download and log into azure cli `az --login`
 - Next run `az aks get-credentials --resource-group azure-k8s-dev --name k8s-dev` to get your kube creds
 
+## AWS
+- Follow the prerequisites on [the Hashicorp's EKS terraform tutorial](https://learn.hashicorp.com/tutorials/terraform/eks)
 # To Configure Authentication with Azure Active Directory (AAD)
 
 ## Register the web client
