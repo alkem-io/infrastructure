@@ -5,7 +5,7 @@ module "eks" {
   subnets         = module.vpc.private_subnets
 
   tags = {
-    Environment = "SDGs"
+    Environment = "The Hague"
     GithubRepo  = "https://github.com/cherrytwist/Infrastructure"
     GithubOrg   = "https://github.com/cherrytwist"
   }
