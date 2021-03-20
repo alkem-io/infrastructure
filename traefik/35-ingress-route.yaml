@@ -8,7 +8,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/graphql`)
+    - match: Host(`the-hague.cherrytwist.org`) && PathPrefix(`/graphql`)
       kind: Rule
       services:
         - name: ct-server-service
@@ -26,7 +26,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/graphql`)
+    - match: Host(`the-hague.cherrytwist.org`) && PathPrefix(`/graphql`)
       kind: Rule
       middlewares:
         - name: http-redirectscheme
@@ -47,7 +47,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/`)
+    - match: Host(`the-hague.cherrytwist.org`) && PathPrefix(`/`)
       kind: Rule
       services:
         - name: ct-web-service
@@ -65,7 +65,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/`)
+    - match: Host(`the-hague.cherrytwist.org`) && PathPrefix(`/`)
       kind: Rule
       middlewares:
         - name: http-redirectscheme
@@ -86,7 +86,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/admin`)
+    - match: Host(`the-hague.cherrytwist.org`) && PathPrefix(`/admin`)
       kind: Rule
       middlewares:
         - name: admin-redirectscheme
@@ -106,7 +106,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/admin`)
+    - match: Host(`the-hague.cherrytwist.org`) && PathPrefix(`/admin`)
       kind: Rule
       middlewares:
         - name: http-redirectscheme
@@ -128,7 +128,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/auth/login`)
+    - match: Host(`the-hague.cherrytwist.org`) && PathPrefix(`/auth/login`)
       kind: Rule
       services:
         - name: ct-simple-auth
@@ -146,7 +146,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/auth/login`)
+    - match: Host(`the-hague.cherrytwist.org`) && PathPrefix(`/auth/login`)
       kind: Rule
       middlewares:
         - name: http-redirectscheme
