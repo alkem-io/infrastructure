@@ -131,7 +131,7 @@ spec:
     - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/auth/login`)
       kind: Rule
       services:
-        - name: ct-simple-auth
+        - name: ct-demo-auth
           port: 3002
   tls:
     certResolver: default
@@ -151,7 +151,7 @@ spec:
       middlewares:
         - name: http-redirectscheme
       services:
-        - name: ct-simple-auth
+        - name: ct-demo-auth
           port: 3002
   tls:
     certResolver: default
