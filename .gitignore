@@ -6,3 +6,4 @@ terraform-aks-k8s/state/.terraform
 terraform-aks-k8s/state/out.plan
 *kubeconfig*
 *.tfstate
+*.hcl
