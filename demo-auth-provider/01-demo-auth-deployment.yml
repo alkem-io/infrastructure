@@ -29,12 +29,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: ct-secrets
-                  key: AUTH_SIMPLE_AUTH_CLIENT_SECRET
+                  key: AUTH_DEMO_AUTH_CLIENT_SECRET
             - name: TOKEN_LIFETIME
               valueFrom:
                 configMapKeyRef:
                   name: ct-config
-                  key: AUTH_SIMPLE_AUTH_TOKEN_LIFETIME
+                  key: AUTH_DEMO_AUTH_TOKEN_LIFETIME
             - name: MYSQL_DATABASE
               value: ct_auth_provider
           ports:
