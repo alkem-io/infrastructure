@@ -2,23 +2,23 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   namespace: default
-  name: ct-simple-auth-deployment
+  name: ct-demo-auth-deployment
   labels:
-    app: ct-simple-auth
+    app: ct-demo-auth
 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ct-simple-auth
+      app: ct-demo-auth
   template:
     metadata:
       labels:
-        app: ct-simple-auth
+        app: ct-demo-auth
     spec:
       containers:
-        - name: ct-simple-auth
-          image: cherrytwist/simple-auth:v0.1.5
+        - name: ct-demo-auth
+          image: cherrytwist/demo-auth:v0.1.7
           envFrom:
             - secretRef:
                 name: ct-secrets
@@ -38,5 +38,5 @@ spec:
             - name: MYSQL_DATABASE
               value: ct_auth_provider
           ports:
-            - name: ct-simple-auth
+            - name: ct-demo-auth
               containerPort: 3002
