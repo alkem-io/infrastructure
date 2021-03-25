@@ -117,18 +117,18 @@ spec:
   tls:
     certResolver: default
 
-#simple-auth-provider
+#demo-auth-provider
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: webingresstls-admin
+  name: webingresstls-demo-auth
   namespace: default
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/auth/login`)
+    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/auth`)
       kind: Rule
       services:
         - name: ct-demo-auth
@@ -140,13 +140,13 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: webingress-admin
+  name: webingress-demo-auth
   namespace: default
 spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/auth/login`)
+    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/auth`)
       kind: Rule
       middlewares:
         - name: http-redirectscheme
