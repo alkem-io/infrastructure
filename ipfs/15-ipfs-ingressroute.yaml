@@ -1,0 +1,38 @@
+#ipfs
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: webingresstls-ipfs
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/ipfs`)
+      kind: Rule
+      services:
+        - name: ipfs
+          port: 8080
+  tls:
+    certResolver: default
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: webingress-ipfs
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/ipfs`)
+      kind: Rule
+      middlewares:
+        - name: http-redirectscheme
+      services:
+        - name: ipfs
+          port: 8080
+  tls:
+    certResolver: default

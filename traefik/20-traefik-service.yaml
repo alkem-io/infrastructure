@@ -16,7 +16,3 @@ spec:
       port: 443
       name: websecure
       targetPort: 80
-    - protocol: TCP
-      port: 8080
-      name: admin
-      targetPort: 8080

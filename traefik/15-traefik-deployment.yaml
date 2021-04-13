@@ -7,7 +7,7 @@ metadata:
   labels:
     app: traefik
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: traefik
@@ -21,9 +21,10 @@ spec:
         - name: traefik
           image: traefik:v2.2
           args:
-            - --api
-            - --log.level=DEBUG
+            - --api=true
+            - --log.level=ERROR
             - --api.insecure
+            - --api.dashboard=true
             - --accesslog
             - --entrypoints.web.address=:80
             - --entrypoints.web.http.redirections.entryPoint.to=websecure
@@ -40,9 +41,5 @@ spec:
           ports:
             - name: web
               containerPort: 80
-            - name: admin
-              containerPort: 8080
             - name: websecure
               containerPort: 443
-
-

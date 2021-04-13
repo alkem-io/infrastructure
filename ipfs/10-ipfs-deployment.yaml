@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  name: ipfs-deployment
+  labels:
+    app: ipfs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ipfs
+  template:
+    metadata:
+      labels:
+        app: ipfs
+    spec:
+      containers:
+        - name: ipfs
+          image: "ipfs/go-ipfs:latest"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: IPFS_FD_MAX
+              value: "4096"
+          ports:
+            - name: ipfs-swarm
+              containerPort: 4001
+            - name: ipfs-swarm-udp
+              containerPort: 4002
+            - name: ipfs-api
+              containerPort: 5001
+            - name: ipfs-ws
+              containerPort: 8081
+            - name: ipfs-http
+              containerPort: 8080
+          livenessProbe:
+            tcpSocket:
+              port: ipfs-swarm
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+            periodSeconds: 15
+          volumeMounts:
+            - mountPath: /data/ipfs
+              name: ipfs-storage
+          resources: {}
+          
+      volumes:
+      - name: ipfs-storage
+        persistentVolumeClaim:
+          claimName: ipfs-pv-claim
