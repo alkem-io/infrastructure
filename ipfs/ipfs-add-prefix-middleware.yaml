@@ -1,8 +1,0 @@
-# Prefixing with /foo
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: add-ipfs
-spec:
-  addPrefix:
-    prefix: /ipfs

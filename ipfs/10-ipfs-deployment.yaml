@@ -15,6 +15,15 @@ spec:
       labels:
         app: ipfs
     spec:
+      initContainers:
+        - name: configure-ipfs
+          image: "ipfs/go-ipfs:latest"
+          command: ["sh", "/custom/configure-ipfs.sh"]
+          volumeMounts:
+            - name: ipfs-storage
+              mountPath: /data/ipfs
+            - name: configure-ipfs
+              mountPath: /custom
       containers:
         - name: ipfs
           image: "ipfs/go-ipfs:latest"
@@ -48,3 +57,6 @@ spec:
       - name: ipfs-storage
         persistentVolumeClaim:
           claimName: ipfs-pv-claim
+      - name: configure-ipfs
+        configMap:
+          name: ipfs-set-bootstrap-conf

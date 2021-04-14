@@ -17,6 +17,8 @@ data:
     ipfs config Datastore.StorageMax 180GB
     ipfs config --json Swarm.ConnMgr.HighWater 2000
     ipfs config --json Datastore.BloomFilterSize 1048576
+    ipfs config Addresses.API /ip4/0.0.0.0/tcp/5001
+    ipfs config Addresses.Gateway /ip4/0.0.0.0/tcp/8080
 
     chown -R ipfs /data/ipfs
 
