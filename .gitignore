@@ -1,1 +1,9 @@
 terraform-aks-k8s/.terraform
+terraform-aks-k8s/out.plan
+terraform-eks-k8s/.terraform
+terraform-eks-k8s/out.plan
+terraform-aks-k8s/state/.terraform
+terraform-aks-k8s/state/out.plan
+*kubeconfig*
+*.tfstate
+*.hcl

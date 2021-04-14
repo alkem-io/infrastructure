@@ -1,0 +1,42 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  namespace: default
+  name: ct-demo-auth-deployment
+  labels:
+    app: ct-demo-auth
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ct-demo-auth
+  template:
+    metadata:
+      labels:
+        app: ct-demo-auth
+    spec:
+      containers:
+        - name: ct-demo-auth
+          image: cherrytwist/demo-auth:v0.1.7
+          envFrom:
+            - secretRef:
+                name: ct-secrets
+            - configMapRef:
+                name: ct-config
+          env:
+            - name: SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: ct-secrets
+                  key: AUTH_DEMO_AUTH_CLIENT_SECRET
+            - name: TOKEN_LIFETIME
+              valueFrom:
+                configMapKeyRef:
+                  name: ct-config
+                  key: AUTH_DEMO_AUTH_TOKEN_LIFETIME
+            - name: MYSQL_DATABASE
+              value: ct_auth_provider
+          ports:
+            - name: ct-demo-auth
+              containerPort: 3002
