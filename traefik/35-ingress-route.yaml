@@ -75,48 +75,6 @@ spec:
   tls:
     certResolver: default
 
-#admin
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: webingresstls-admin
-  namespace: default
-spec:
-  entryPoints:
-    - websecure
-  routes:
-    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/admin`)
-      kind: Rule
-      middlewares:
-        - name: admin-redirectscheme
-      services:
-        - name: ct-web-service
-          port: 80
-  tls:
-    certResolver: default
-
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: webingress-admin
-  namespace: default
-spec:
-  entryPoints:
-    - web
-  routes:
-    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/admin`)
-      kind: Rule
-      middlewares:
-        - name: http-redirectscheme
-        - name: admin-redirectscheme
-      services:
-        - name: ct-web-service
-          port: 80
-  tls:
-    certResolver: default
-
 #demo-auth-provider
 ---
 apiVersion: traefik.containo.us/v1alpha1
