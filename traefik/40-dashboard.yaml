@@ -9,7 +9,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`dev.cherrytwist.org`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
+    - match: Host(`dev.alkem.io`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
       kind: Rule
       services:
         - name: api@internal
@@ -27,7 +27,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`dev.cherrytwist.org`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
+    - match: Host(`dev.alkem.io`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
       kind: Rule
       middlewares:
         - name: http-redirectscheme

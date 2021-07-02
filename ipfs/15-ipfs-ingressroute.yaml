@@ -9,7 +9,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/ipfs`)
+    - match: Host(`dev.alkem.io`) && PathPrefix(`/ipfs`)
       kind: Rule
       services:
         - name: ipfs
@@ -27,7 +27,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`dev.cherrytwist.org`) && PathPrefix(`/ipfs`)
+    - match: Host(`dev.alkem.io`) && PathPrefix(`/ipfs`)
       kind: Rule
       middlewares:
         - name: http-redirectscheme
