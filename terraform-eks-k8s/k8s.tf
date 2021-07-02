@@ -6,8 +6,8 @@ module "eks" {
 
   tags = {
     Environment = "SDGs"
-    GithubRepo  = "https://github.com/cherrytwist/Infrastructure"
-    GithubOrg   = "https://github.com/cherrytwist"
+    GithubRepo  = "https://github.com/alkem-io/Infrastructure"
+    GithubOrg   = "https://github.com/alkem-io"
   }
 
   vpc_id = module.vpc.vpc_id
